@@ -1,0 +1,161 @@
+
+ff: parsing domain file
+domain 'CAMPI' defined
+ ... done.
+ff: parsing problem file
+problem 'DIECI-CAMPI' defined
+ ... done.
+
+
+
+Cueing down from goal distance:   57 into depth [1]
+                                  56            [1]
+                                  53            [1][2]
+                                  49            [1]
+                                  48            [1][2]
+                                  47            [1][2][3][4]
+                                  46            [1][2][3]
+                                  45            [1][2][3]
+                                  44            [1][2]
+                                  42            [1][2]
+                                  41            [1]
+                                  40            [1]
+                                  39            [1]
+                                  38            [1][2][3]
+                                  37            [1][2]
+                                  36            [1]
+                                  35            [1][2]
+                                  34            [1]
+                                  33            [1][2]
+                                  32            [1]
+                                  31            [1][2][3]
+                                  30            [1]
+                                  29            [1][2]
+                                  28            [1][2]
+                                  27            [1][2][3][4][5][6][7][8]
+                                  26            [1]
+                                  25            [1]
+                                  24            [1][2][3]
+                                  23            [1][2]
+                                  22            [1]
+                                  21            [1][2][3]
+                                  20            [1]
+                                  19            [1][2]
+                                  18            [1][2][3]
+                                  17            [1][2]
+                                  16            [1]
+                                  15            [1]
+                                  14            [1][2][3][4][5]
+                                  11            [1][2][3][4][5]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: MUOVI_CONTADINO CONTADINO2 CAM5 CAM2
+        1: SALI_SU_TRATTORE CONTADINO1 TRAA1 CAM1
+        2: MUOVI_CONTADINO CONTADINO2 CAM2 CAM1
+        3: SALI_SU_TRATTORE CONTADINO2 TRAS1 CAM1
+        4: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM1 CAM8
+        5: MUOVI_TRATTORE CONTADINO1 TRAA1 CAM1 CAM8
+        6: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM8 CAM9
+        7: SCENDI_DA_TRATTORE CONTADINO1 TRAA1
+        8: ATTACCA_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM8
+        9: SALI_SU_TRATTORE CONTADINO1 TRAA1 CAM8
+       10: ARA_CAMPO TRAA1 CAM8
+       11: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM9 CAM8
+       12: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM8 CAM9
+       13: ARA_CAMPO TRAA1 CAM9
+       14: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM9 CAM10
+       15: ARA_CAMPO TRAA1 CAM10
+       16: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM10 CAM9
+       17: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM8 CAM9
+       18: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM9 CAM8
+       19: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM8 CAM1
+       20: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM1 CAM5
+       21: ARA_CAMPO TRAA1 CAM5
+       22: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM5 CAM6
+       23: ARA_CAMPO TRAA1 CAM6
+       24: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM6 CAM7
+       25: ARA_CAMPO TRAA1 CAM7
+       26: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM7 CAM6
+       27: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM6 CAM5
+       28: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM5 CAM2
+       29: ARA_CAMPO TRAA1 CAM2
+       30: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM9 CAM8
+       31: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM2 CAM3
+       32: ARA_CAMPO TRAA1 CAM3
+       33: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM8 CAM7
+       34: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM3 CAM4
+       35: ARA_CAMPO TRAA1 CAM4
+       36: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM4 CAM5
+       37: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM5 CAM1
+       38: ARA_CAMPO TRAA1 CAM1
+       39: MUOVI_TRATTORE_ARATRO CONTADINO1 TRAA1 ARATRO2 CAM1 CAM8
+       40: SCENDI_DA_TRATTORE CONTADINO1 TRAA1
+       41: MUOVI_CONTADINO CONTADINO1 CAM8 CAM9
+       42: MUOVI_CONTADINO CONTADINO1 CAM9 CAM10
+       43: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM7 CAM8
+       44: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM8 CAM1
+       45: MUOVI_TRATTORE CONTADINO2 TRAS1 CAM1 CAM2
+       46: SCENDI_DA_TRATTORE CONTADINO2 TRAS1
+       47: ATTACCA_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM2
+       48: SALI_SU_TRATTORE CONTADINO2 TRAS1 CAM2
+       49: SEMINA_CAMPO TRAS1 CAM2
+       50: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM2 CAM5
+       51: SEMINA_CAMPO TRAS1 CAM5
+       52: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM5 CAM6
+       53: SEMINA_CAMPO TRAS1 CAM6
+       54: SCENDI_DA_TRATTORE CONTADINO2 TRAS1
+       55: INNAFFIA_CAMPO CONTADINO2 CAM6
+       56: SALI_SU_TRATTORE CONTADINO2 TRAS1 CAM6
+       57: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM6 CAM5
+       58: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM5 CAM1
+       59: SEMINA_CAMPO TRAS1 CAM1
+       60: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM1 CAM8
+       61: SEMINA_CAMPO TRAS1 CAM8
+       62: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM8 CAM7
+       63: SEMINA_CAMPO TRAS1 CAM7
+       64: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM7 CAM8
+       65: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM8 CAM1
+       66: MUOVI_CONTADINO CONTADINO1 CAM10 CAM9
+       67: MUOVI_CONTADINO CONTADINO1 CAM9 CAM8
+       68: INNAFFIA_CAMPO CONTADINO1 CAM8
+       69: MUOVI_CONTADINO CONTADINO1 CAM8 CAM7
+       70: INNAFFIA_CAMPO CONTADINO1 CAM7
+       71: MUOVI_CONTADINO CONTADINO1 CAM7 CAM8
+       72: MUOVI_CONTADINO CONTADINO1 CAM8 CAM9
+       73: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM1 CAM2
+       74: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM2 CAM3
+       75: SEMINA_CAMPO TRAS1 CAM3
+       76: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM3 CAM2
+       77: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM2 CAM1
+       78: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM1 CAM5
+       79: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM5 CAM4
+       80: SEMINA_CAMPO TRAS1 CAM4
+       81: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM4 CAM5
+       82: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM5 CAM1
+       83: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM1 CAM8
+       84: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM8 CAM9
+       85: SEMINA_CAMPO TRAS1 CAM9
+       86: INNAFFIA_CAMPO CONTADINO1 CAM9
+       87: MUOVI_CONTADINO CONTADINO1 CAM9 CAM10
+       88: MUOVI_TRATTORE_SEMINATORE CONTADINO2 TRAS1 SEMINATORE1 CAM9 CAM10
+       89: SEMINA_CAMPO TRAS1 CAM10
+       90: INNAFFIA_CAMPO CONTADINO1 CAM10
+     
+
+time spent:    6.29 seconds instantiating 68 easy, 1024 hard action templates
+               0.00 seconds reachability analysis, yielding 320 facts and 1092 actions
+               0.00 seconds creating final representation with 204 relevant facts
+               0.00 seconds building connectivity graph
+               0.25 seconds searching, evaluating 2229 states, to a max depth of 8
+               6.54 seconds total time
+

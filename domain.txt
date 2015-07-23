@@ -1,0 +1,288 @@
+(define (domain CAMPI)
+  (:requirements :strips :typing)
+;;  (:types obj)
+  (:predicates
+  (CONNESSO ?o1 ?o2)
+  (at ?o1 ?o2)
+  (occupato ?o1)
+  (in_uso ?o1)
+  (on ?o1 ?o2)
+  (arante ?o1)
+  (seminante ?o1)
+  (trainato ?o1)
+  (attaccato ?o1 ?o2)
+  (contadino ?o1)
+  (CAMPO ?o1)
+  (TRA ?o1)
+  (TRA-ARA ?o1)
+  (TRA-SEMINA ?o1)
+  (ARATRO ?o1)
+  (SEMINATORE ?o1)
+  (arato ?o1)
+  (seminato ?o1)
+  (innaffiato ?o1)
+  )
+  
+(:action muovi_contadino
+             :parameters (?contadino ?da ?a)
+             :precondition (and 
+             (contadino ?contadino)
+             (CAMPO ?da)
+             (CAMPO ?a)
+             (CONNESSO ?da ?a)
+             (at ?contadino ?da)
+             (not (occupato ?contadino))
+             )
+             :effect
+             (and
+             (not (at ?contadino ?da))
+             (at ?contadino ?a)
+             ))
+             
+(:action sali_su_trattore
+             :parameters (?contadino ?trattore ?campo)
+             :precondition (and
+             (contadino ?contadino)
+             (CAMPO ?campo)
+             (or (TRA ?trattore) (TRA-ARA ?trattore) (TRA-SEMINA ?trattore))
+             (not (occupato ?contadino))
+             (not (in_uso ?trattore))
+             (at ?contadino ?campo)
+             (at ?trattore ?campo)
+             )
+             :effect
+             (and
+             (occupato ?contadino)
+             (in_uso ?trattore)
+             (on ?contadino ?trattore)
+             ))
+             
+(:action scendi_da_trattore
+             :parameters (?contadino ?trattore)
+             :precondition (and
+             (contadino ?contadino)
+             (or (TRA ?trattore) (TRA-ARA ?trattore) (TRA-SEMINA ?trattore))
+             (on ?contadino ?trattore)
+             )
+             :effect
+             (and
+             (not (on ?contadino ?trattore))
+             (not (occupato ?contadino))
+             (not (in_uso ?trattore))
+             ))
+
+(:action muovi_trattore
+             :parameters (?contadino ?trattore ?da ?a)
+             :precondition (and
+             (contadino ?contadino)
+             (or (TRA ?trattore) (TRA-ARA ?trattore) (TRA-SEMINA ?trattore))
+             (CAMPO ?da)
+             (CAMPO ?a)
+             (CONNESSO ?da ?a)
+             (at ?contadino ?da)
+             (at ?trattore ?da)
+             (on ?contadino ?trattore)
+             (not (arante ?trattore)) ;;AGGIUNTE
+             (not (seminante ?trattore))  ;;AGGIUNTE       
+             )
+             :effect
+             (and
+             (not (at ?contadino ?da))
+             (not (at ?trattore ?da))
+             (at ?contadino ?a)
+             (at ?trattore ?a)
+             ))
+             
+(:action attacca_aratro
+             :parameters (?contadino ?trattore ?aratro ?campo)
+             :precondition (and
+             (contadino ?contadino)
+             (CAMPO ?campo)
+             (or (TRA ?trattore) (TRA-ARA ?trattore))
+             (not (TRA-SEMINA ?trattore))    ;;AGGIUNTO
+             (ARATRO ?aratro)
+             (not (occupato ?contadino))
+             (at ?contadino ?campo)
+             (at ?trattore ?campo)
+             (at ?aratro ?campo)
+             ;;(not (TRA_SEMINA ?trattore))
+             (not (arante ?trattore))
+             (not (seminante ?trattore))
+             (not (trainato ?aratro))
+             )
+             :effect
+             (and
+             (arante ?trattore)
+             (trainato ?aratro)
+             (attaccato ?trattore ?aratro)
+             ))
+             
+(:action stacca_aratro
+             :parameters (?contadino ?trattore ?aratro ?campo)
+             :precondition (and 
+             (contadino ?contadino)
+             (CAMPO ?campo)
+             (or (TRA ?trattore) (TRA-ARA ?trattore))
+             (not (TRA-SEMINA ?trattore))    ;;AGGIUNTO
+             (ARATRO ?aratro)
+             (not (occupato ?contadino))
+             (at ?contadino ?campo)
+             (at ?trattore ?campo)
+             (at ?aratro ?campo)
+             (attaccato ?trattore ?aratro)
+             )
+             :effect
+             (and
+             (not (attaccato ?trattore ?aratro))
+             (not (arante ?trattore))
+             (not (trainato ?aratro))
+             ))
+             
+(:action muovi_trattore_aratro
+             :parameters (?contadino ?trattore ?aratro ?da ?a)
+             :precondition (and 
+             (contadino ?contadino)
+             (CAMPO ?da)
+             (CAMPO ?a)
+             (or (TRA ?trattore) (TRA-ARA ?trattore))
+             (not (TRA-SEMINA ?trattore))    ;;AGGIUNTO
+             (ARATRO ?aratro)
+             (at ?contadino ?da)
+             (at ?trattore ?da)
+             (at ?aratro ?da)
+             (CONNESSO ?da ?a)
+             (on ?contadino ?trattore)
+             (attaccato ?trattore ?aratro)
+             )
+             :effect
+             (and
+             (not (at ?contadino ?da))
+             (not (at ?trattore ?da))
+             (not (at ?aratro ?da))
+             (at ?contadino ?a)
+             (at ?trattore ?a)
+             (at ?aratro ?a)
+             ))
+
+(:action attacca_seminatore
+             :parameters (?contadino ?trattore ?seminatore ?campo)
+             :precondition (and
+             (contadino ?contadino)
+             (CAMPO ?campo)
+             (or (TRA ?trattore)(TRA-SEMINA ?trattore))
+             (not (TRA-ARA ?trattore))    ;;AGGIUNTO
+             (SEMINATORE ?seminatore)
+             (not (occupato ?contadino))
+             (at ?contadino ?campo)
+             (at ?trattore ?campo)
+             (at ?seminatore ?campo)
+             ;;(not (TRA_ARA ?trattore))  ;; tolto il commento per lo stesso ragionamento
+             (not (arante ?trattore))
+             (not (seminante ?trattore))
+             (not (trainato ?seminatore))
+             )
+             :effect
+             (and
+             (seminante ?trattore)
+             (trainato ?seminatore)
+             (attaccato ?trattore ?seminatore)
+             ))
+             
+(:action stacca_seminatore
+             :parameters (?contadino ?trattore ?seminatore ?campo)
+             :precondition (and
+             (contadino ?contadino)
+             (CAMPO ?campo)
+             (or (TRA ?trattore) (TRA-SEMINA ?trattore))
+             (not (TRA-ARA ?trattore)) ;;AGGIUNTO
+             (SEMINATORE ?seminatore)
+             (not (occupato ?contadino))
+             (at ?contadino ?campo)
+             (at ?trattore ?campo)
+             (at ?seminatore ?campo)
+             (attaccato ?trattore ?seminatore)
+             )
+             :effect
+             (and
+             (not (attaccato ?trattore ?seminatore))
+             (not (seminante ?trattore))
+             (not (trainato ?seminatore))
+             ))
+             
+(:action muovi_trattore_seminatore
+             :parameters (?contadino ?trattore ?seminatore ?da ?a)
+             :precondition (and
+             (contadino ?contadino)
+             (CAMPO ?da)
+             (CAMPO ?a)
+             (or (TRA ?trattore) (TRA-SEMINA ?trattore))
+             (not (TRA-ARA ?trattore)) ;;AGGIUNTO
+             (SEMINATORE ?seminatore)
+             (at ?contadino ?da)
+             (at ?trattore ?da)
+             (at ?seminatore ?da)
+             (CONNESSO ?da ?a)
+             (on ?contadino ?trattore)
+             (attaccato ?trattore ?seminatore)
+             )
+             :effect
+             (and
+             (not (at ?contadino ?da))
+             (not (at ?trattore ?da))
+             (not (at ?seminatore ?da))
+             (at ?contadino ?a)
+             (at ?trattore ?a)
+             (at ?seminatore ?a)
+             ))
+             
+(:action ara_campo
+             :parameters (?trattore ?campo)
+             :precondition (and
+             (CAMPO ?campo)
+             (or (TRA ?trattore) (TRA-ARA ?trattore))
+             (not (TRA-SEMINA ?trattore)) ;;AGGIUNTO
+             (arante ?trattore)
+             (in_uso ?trattore)
+             (not (arato ?campo))
+             (not (seminato ?campo))
+             (not (innaffiato ?campo))
+             (at ?trattore ?campo)
+             )
+             :effect
+             (and
+             (arato ?campo)
+             ))
+             
+(:action semina_campo
+             :parameters (?trattore ?campo)
+             :precondition (and
+             (CAMPO ?campo)
+             (or (TRA ?trattore) (TRA-SEMINA ?trattore))
+             (not (TRA-ARA ?trattore)) ;;AGGIUNTO
+             (seminante ?trattore)
+             (in_uso ?trattore)
+             (arato ?campo)
+             (not (seminato ?campo))
+             (not (innaffiato ?campo))
+             (at ?trattore ?campo)
+             )
+             :effect
+             (and
+             (seminato ?campo)
+             ))
+             
+(:action innaffia_campo
+             :parameters (?contadino ?campo)
+             :precondition (and(contadino ?contadino)
+             (contadino ?contadino)
+             (CAMPO ?campo)
+             (not (occupato ?contadino))
+             (seminato ?campo)
+             (not (innaffiato ?campo))
+             (at ?contadino ?campo)
+             )
+             :effect
+             (and
+             (innaffiato ?campo)
+             ))
+)
